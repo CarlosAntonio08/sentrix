@@ -10,6 +10,11 @@
  */
 require_once __DIR__ . '/includes/instalador.php';
 
+if (BANCO_GERENCIADO) {
+    http_response_code(403);
+    exit('Instalação e restauração indisponíveis para o banco configurado no ambiente.');
+}
+
 $jaInstalado = is_file(ARQUIVO_INSTALADO);
 
 if ($jaInstalado) {

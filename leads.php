@@ -5,7 +5,7 @@
  * Proteções: CSRF, campo-armadilha anti-robô, consentimento (LGPD)
  * e limite de envios por sessão.
  */
-require_once 'includes/bootstrap.php';
+require_once __DIR__ . '/includes/bootstrap.php';
 
 header('Content-Type: application/json; charset=utf-8');
 

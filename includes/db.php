@@ -8,7 +8,7 @@ function ir_para_instalador(): void
     exit;
 }
 
-if (!getenv('SENTRIX_DB_HOST') && !is_file(ARQUIVO_INSTALADO)) {
+if (!BANCO_GERENCIADO && !is_file(ARQUIVO_INSTALADO)) {
     ir_para_instalador();
 }
 
@@ -23,15 +23,24 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES => false,
 ];
 
-if (getenv('SENTRIX_DB_SSL') === 'true') {
-    $options[PDO::MYSQL_ATTR_SSL_CA] =
-        '/etc/ssl/certs/ca-certificates.crt';
-
-    $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = true;
-}
+$usaTls = getenv('RENDER') === 'true'
+    || str_ends_with(strtolower(rtrim(DB_HOST, '.')), '.tidbcloud.com')
+    || filter_var(getenv('SENTRIX_DB_SSL'), FILTER_VALIDATE_BOOLEAN);
 
 try {
+    if ($usaTls) {
+        $ca = getenv('SENTRIX_DB_SSL_CA') ?: '/etc/ssl/certs/ca-certificates.crt';
+        if (!is_readable($ca)) {
+            throw new PDOException('O certificado CA do banco não está acessível.');
+        }
+        $options[PDO::MYSQL_ATTR_SSL_CA] = $ca;
+        $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = true;
+    }
+
     $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+    if ($usaTls && !$pdo->query("SHOW SESSION STATUS LIKE 'Ssl_cipher'")->fetchColumn(1)) {
+        throw new PDOException('O banco não negociou TLS.');
+    }
     $pdo->exec("SET time_zone = '" . date('P') . "'");
 } catch (PDOException $e) {
     error_log('[Sentrix] Falha na conexão: ' . $e->getMessage());

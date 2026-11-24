@@ -7,8 +7,8 @@
  *        automaticamente para checar vírus — isso não pode gastar o acesso.
  * POST → consome o link (uso único) e cria a sessão neste navegador/app.
  */
-require_once 'includes/bootstrap.php';
-require_once 'includes/login_email.php';
+require_once __DIR__ . '/includes/bootstrap.php';
+require_once __DIR__ . '/includes/login_email.php';
 
 header('Referrer-Policy: no-referrer'); // o token não vaza para sites externos
 header('Cache-Control: no-store');
@@ -31,7 +31,7 @@ if (!$dados && $token !== '' && preg_match('/^[a-f0-9]{64}$/', $token)) {
 }
 
 $titulo = 'Entrar — Sentrix Guard Flow';
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -69,4 +69,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

@@ -14,10 +14,13 @@ define('SITE_NAME', 'Sentrix Guard Flow');
 // false = mostra mensagem genérica e grava o detalhe no log do PHP (produção)
 define('APP_DEBUG', filter_var(getenv('SENTRIX_DEBUG') ?: 'false', FILTER_VALIDATE_BOOLEAN));
 
+// No Render e com banco externo configurado, use o banco existente.
+define('BANCO_GERENCIADO', getenv('RENDER') === 'true' || (string) getenv('SENTRIX_DB_HOST') !== '');
+
 // Banco de dados (MySQL / MariaDB)
 // O instalador (instalar.php) grava em config/config.local.php as credenciais
 // digitadas por você quando forem diferentes do padrão do XAMPP (root, sem senha).
-if (is_file(__DIR__ . '/config.local.php')) {
+if (!BANCO_GERENCIADO && is_file(__DIR__ . '/config.local.php')) {
     require __DIR__ . '/config.local.php';
 }
 defined('DB_HOST')    || define('DB_HOST', getenv('SENTRIX_DB_HOST') ?: '127.0.0.1');
@@ -43,7 +46,7 @@ defined('MAIL_USUARIO')          || define('MAIL_USUARIO', '');      // ex.: seu
 defined('MAIL_SENHA')            || define('MAIL_SENHA', '');        // senha de app do Google (16 letras)
 defined('MAIL_REMETENTE_NOME')   || define('MAIL_REMETENTE_NOME', 'Sentrix Guard Flow');
 defined('LOGIN_CONFIRMAR_EMAIL') || define('LOGIN_CONFIRMAR_EMAIL', true); // exige o link do e-mail para entrar
-defined('APP_URL')               || define('APP_URL', '');           // endereço do site usado nos links (vazio = automático)
+defined('APP_URL')               || define('APP_URL', getenv('RENDER_EXTERNAL_URL') ?: '');           // endereço do site usado nos links (vazio = automático)
 define('LOGIN_LINK_MINUTOS', 15);                                     // validade do link de acesso
 define('ARQUIVO_MIGRACAO', __DIR__ . '/banco-v2.lock');
 

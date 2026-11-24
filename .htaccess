@@ -1,0 +1,11 @@
+Options -Indexes
+RewriteEngine On
+
+# Arquivos usados pelo PHP e pelo terminal ficam fora do acesso HTTP.
+RewriteRule ^(?:config|includes|scripts|tests|docs|lib)(?:/|$) - [F,NC]
+RewriteRule "(^|/)\." - [F]
+RewriteRule "(?:^Dockerfile$|\.(?:sql|md|sh|bat|txt|lock|zip|log|ini|bak|pem|key)$)" - [F,NC]
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>

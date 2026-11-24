@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';
 
 // --- Ação: atualizar status de um alerta (admin/operador) ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['alerta_id'], $_POST['novo_status'])) {
@@ -45,7 +45,7 @@ $alertas = $stmt->fetchAll();
 $link = fn (array $q) => 'alertas-ia.php' . (($q = array_filter($q)) ? '?' . http_build_query($q) : '');
 
 $titulo = 'Alertas — Sentrix Guard Flow';
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -146,4 +146,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

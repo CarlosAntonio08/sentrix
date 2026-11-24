@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/bootstrap.php';
+require_once __DIR__ . '/includes/bootstrap.php';
 $titulo = 'Sentrix Guard Flow — Segurança Inteligente';
 
 /*
@@ -91,7 +91,7 @@ $features = [
 ];
 
 $scriptsPagina = ['index.js'];
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -254,4 +254,4 @@ require_once 'includes/header.php';
     'desc'  => $f['desc'],  'items' => $f['items'],
 ], $features), JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

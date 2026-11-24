@@ -3,7 +3,7 @@
  * Exporta os alertas em CSV (abre direto no Excel / LibreOffice / Google Planilhas).
  * Respeita o mesmo filtro de status da tela de alertas.
  */
-require_once 'includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';
 
 $filtro = $_GET['status'] ?? 'todos';
 $where  = '';

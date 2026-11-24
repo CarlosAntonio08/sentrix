@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/bootstrap.php';
+require_once __DIR__ . '/includes/bootstrap.php';
 
 if (!empty($_SESSION['usuario_id'])) {
     redirecionar('painel.php');
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $titulo = 'Criar Conta — Sentrix Guard Flow';
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -119,4 +119,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

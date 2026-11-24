@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';
 
 $rastreadores = $pdo->query(
     "SELECT g.id, g.nome, g.tipo, g.ativo, l.velocidade_kmh, l.registrado_em
@@ -36,7 +36,7 @@ $dadosMapa = [
 $titulo   = 'GPS — Sentrix Guard Flow';
 $usarMapa = true;
 $scriptsPagina = ['gps.js'];
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -164,4 +164,4 @@ require_once 'includes/header.php';
 </main>
 
 <script type="application/json" id="dadosMapa"><?= json_encode($dadosMapa, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

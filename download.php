@@ -1,10 +1,10 @@
 <?php
-require_once 'includes/bootstrap.php';
+require_once __DIR__ . '/includes/bootstrap.php';
 $titulo = 'Aplicativo — Sentrix Guard Flow';
 $scriptsPagina = ['download.js'];
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 
-$seguro = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+$seguro = getenv('RENDER') === 'true' || (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
     || in_array($_SERVER['SERVER_NAME'] ?? '', ['localhost', '127.0.0.1'], true);
 ?>
 
@@ -108,4 +108,4 @@ $seguro = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

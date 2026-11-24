@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/bootstrap.php';
+require_once __DIR__ . '/includes/bootstrap.php';
 
 // Logout só por POST com token CSRF (um link externo não consegue deslogar o usuário)
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

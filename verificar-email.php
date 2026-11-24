@@ -4,8 +4,8 @@
  * Permite reenviar o link e, no modo demonstração (ou se o envio falhar),
  * abrir a caixa de saída para ver o e-mail na própria tela.
  */
-require_once 'includes/bootstrap.php';
-require_once 'includes/login_email.php';
+require_once __DIR__ . '/includes/bootstrap.php';
+require_once __DIR__ . '/includes/login_email.php';
 
 // Consulta feita pela própria página (JavaScript) para saber se o link já foi
 // aberto neste mesmo navegador — aí ela segue sozinha para o painel.
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $status = $pendente['status'] ?? 'enviado';
 $titulo = 'Confirme pelo e-mail — Sentrix Guard Flow';
 $scriptsPagina = ['verificar-email.js'];
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -126,4 +126,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
