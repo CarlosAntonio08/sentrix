@@ -230,3 +230,11 @@ sentrix/
 
 Mais detalhes (requisitos, casos de uso, modelo de dados, arquitetura) em
 `docs/documentacao-tecnica.md`.
+
+## Deploy no Render com TiDB Cloud
+
+No serviço Web do Render, selecione o runtime Docker e use a raiz do repositório como contexto de build. O caminho do Dockerfile é `./Dockerfile`. O Apache escuta na porta 80.
+
+Em **Environment**, configure `SENTRIX_DB_HOST`, `SENTRIX_DB_PORT` (normalmente `4000`), `SENTRIX_DB_NAME`, `SENTRIX_DB_USER` e `SENTRIX_DB_PASS` com os valores do banco existente. Use o hostname exibido em **Connect** no TiDB Cloud. No Render, a aplicação exige TLS com verificação de certificado usando o pacote de CAs do sistema. Se o seu cluster exigir uma CA específica, adicione-a como Secret File e informe o caminho do arquivo em `SENTRIX_DB_SSL_CA`.
+
+O deploy pressupõe que o banco já contém as tabelas da aplicação, inclusive as de confirmação de e-mail. O instalador, a restauração de demonstração e as migrações automáticas ficam desativados no Render. Após o deploy, abra a página inicial para verificar a conexão e confira os logs do serviço se receber um erro.

@@ -4,8 +4,8 @@
  * envia um e-mail de teste e mostra o histórico de envios.
  * As configurações ficam em config/email.local.php (bloqueado para a web).
  */
-require_once 'includes/auth.php';
-require_once 'includes/email.php';
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/email.php';
 exigir_permissao('gerenciar_usuarios');
 
 const ARQUIVO_EMAIL_LOCAL = __DIR__ . '/config/email.local.php';
@@ -101,7 +101,7 @@ $historico = $pdo->query(
 )->fetchAll();
 
 $titulo = 'E-mail — Sentrix Guard Flow';
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -116,7 +116,7 @@ require_once 'includes/header.php';
 
   <section class="page-section">
     <div class="page-section-inner">
-      <?php require 'includes/abas-admin.php'; ?>
+      <?php require __DIR__ . '/includes/abas-admin.php'; ?>
       <?= flash_exibir() ?>
 
       <?php if (email_configurado()): ?>
@@ -230,4 +230,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

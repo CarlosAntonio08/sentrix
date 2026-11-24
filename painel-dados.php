@@ -2,7 +2,7 @@
 /**
  * Endpoint JSON com os indicadores do painel (atualização automática).
  */
-require_once 'includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 

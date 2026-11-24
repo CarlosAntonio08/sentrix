@@ -5,7 +5,7 @@
  *  - Admin e operador podem cadastrar e editar.
  *  - Somente admin pode excluir.
  */
-require_once 'includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';
 
 $tipos        = array_keys(ROTULOS['tipo_disp']);
 $statusLista  = array_keys(ROTULOS['status_disp']);
@@ -207,7 +207,7 @@ $stmt->execute($params);
 $dispositivos = $stmt->fetchAll();
 
 $titulo = 'Dispositivos — Sentrix Guard Flow';
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -403,4 +403,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

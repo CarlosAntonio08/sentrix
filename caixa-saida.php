@@ -6,8 +6,8 @@
  * a pessoa precisa ter acertado a senha nesta mesma sessão. Serve para
  * apresentar o fluxo sem internet ou antes de configurar o Gmail.
  */
-require_once 'includes/bootstrap.php';
-require_once 'includes/login_email.php';
+require_once __DIR__ . '/includes/bootstrap.php';
+require_once __DIR__ . '/includes/login_email.php';
 
 $pendente = $_SESSION['login_pendente'] ?? null;
 if (!$pendente) {
@@ -27,7 +27,7 @@ $stmt->execute([$pendente['id'], (int) $pendente['email_id_min']]);
 $emails = $stmt->fetchAll();
 
 $titulo = 'Caixa de saída (demonstração) — Sentrix Guard Flow';
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -68,4 +68,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

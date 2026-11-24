@@ -5,7 +5,7 @@
    - Sem internet/servidor, mostra a tela offline.html.
    Ao mudar CSS/JS, troque a VERSAO para os aparelhos baixarem de novo.
    ============================================ */
-const VERSAO = 'sentrix-v2-2';
+const VERSAO = 'sentrix-v2-3';
 const ARQUIVOS = [
     'offline.html',
     'manifest.webmanifest',

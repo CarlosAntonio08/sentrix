@@ -7,7 +7,7 @@
 require_once __DIR__ . '/../config/config.php';
 
 if (session_status() === PHP_SESSION_NONE) {
-    $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+    $https = getenv('RENDER') === 'true' || (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
     session_set_cookie_params([
@@ -32,7 +32,7 @@ require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/helpers.php';
 
 // Atualiza automaticamente bancos instalados por versões anteriores
-if (!is_file(ARQUIVO_MIGRACAO)) {
+if (!BANCO_GERENCIADO && !is_file(ARQUIVO_MIGRACAO)) {
     require_once __DIR__ . '/migracoes.php';
     aplicar_migracoes($pdo);
 }

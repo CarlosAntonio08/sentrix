@@ -2,7 +2,7 @@
 /**
  * Log de auditoria (somente admin): quem fez o quê, quando e de onde.
  */
-require_once 'includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';
 exigir_permissao('ver_logs');
 
 $porPagina = 50;
@@ -42,7 +42,7 @@ $linkPagina = function (int $p) use ($filtroTipo, $filtroUsuario): string {
 };
 
 $titulo = 'Log de auditoria — Sentrix Guard Flow';
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -57,7 +57,7 @@ require_once 'includes/header.php';
 
   <section class="page-section">
     <div class="page-section-inner">
-      <?php require 'includes/abas-admin.php'; ?>
+      <?php require __DIR__ . '/includes/abas-admin.php'; ?>
 
       <div class="toolbar">
         <form method="GET" action="logs.php" class="toolbar-filtros">
@@ -112,4 +112,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

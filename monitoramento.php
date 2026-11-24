@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';
 
 // --- Ação: ligar/desligar gravação de uma câmera (admin/operador) ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['toggle_gravando'])) {
@@ -43,7 +43,7 @@ $outros = $pdo->query(
 )->fetchAll();
 
 $titulo = 'Monitoramento — Sentrix Guard Flow';
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -136,4 +136,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

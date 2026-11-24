@@ -5,8 +5,10 @@ $abas = [
     'usuarios.php'            => 'Usuários',
     'logs.php'                => 'Log de auditoria',
     'configuracoes-email.php' => 'E-mail',
-    'instalar.php'            => 'Dados de demonstração',
 ];
+if (!BANCO_GERENCIADO) {
+    $abas['instalar.php'] = 'Dados de demonstração';
+}
 ?>
 <nav class="tabs" aria-label="Administração">
   <?php foreach ($abas as $arquivo => $rotuloAba): ?>

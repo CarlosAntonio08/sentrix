@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/auth.php'; // exige login e carrega $usuarioLogado
+require_once __DIR__ . '/includes/auth.php'; // exige login e carrega $usuarioLogado
 
 $ind = indicadores_painel($pdo);
 
@@ -18,7 +18,7 @@ $dispositivos = $pdo->query(
 
 $titulo = 'Painel — Sentrix Guard Flow';
 $scriptsPagina = ['painel.js'];
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -191,4 +191,4 @@ require_once 'includes/header.php';
 </main>
 
 <script type="application/json" id="dadosPainel"><?= json_encode(['ultimo_alerta_id' => $ind['ultimo_alerta_id']]) ?></script>
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>

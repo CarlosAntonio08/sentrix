@@ -4,7 +4,7 @@
  * e redefinir senha. O admin não pode rebaixar nem desativar a própria conta,
  * para nunca ficar sem nenhum administrador.
  */
-require_once 'includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';
 exigir_permissao('gerenciar_usuarios');
 
 $cargos = array_keys(ROTULOS['cargo']);
@@ -55,7 +55,7 @@ $usuarios = $pdo->query(
 )->fetchAll();
 
 $titulo = 'Usuários — Sentrix Guard Flow';
-require_once 'includes/header.php';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <main>
@@ -70,7 +70,7 @@ require_once 'includes/header.php';
 
   <section class="page-section">
     <div class="page-section-inner">
-      <?php require 'includes/abas-admin.php'; ?>
+      <?php require __DIR__ . '/includes/abas-admin.php'; ?>
 
       <?= flash_exibir() ?>
 
@@ -140,4 +140,4 @@ require_once 'includes/header.php';
   </section>
 </main>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
