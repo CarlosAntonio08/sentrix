@@ -1,0 +1,3 @@
+PHPMailer 6.9.3 (https://github.com/PHPMailer/PHPMailer) — biblioteca de código aberto
+(licença LGPL 2.1, ver LICENSE) usada para enviar e-mails por SMTP (ex.: Gmail).
+Incluída aqui para o projeto funcionar sem precisar instalar o Composer.

@@ -1,0 +1,15 @@
+Options -Indexes
+RewriteEngine On
+
+# Bloqueia acesso direto a pastas internas e arquivos sensíveis
+RewriteRule ^(config|includes|scripts|tests|docs|lib)/ - [F,L]
+RewriteRule \.(sql|md|sh|bat|txt|lock)$ - [F,L]
+
+# Cabeçalhos de segurança (complementam os enviados pelo PHP)
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Em produção com HTTPS, descomente para forçar HTTPS:
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

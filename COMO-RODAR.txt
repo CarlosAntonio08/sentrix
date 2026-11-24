@@ -1,0 +1,90 @@
+﻿==========================================================
+  SENTRIX GUARD FLOW — COMO RODAR NO WINDOWS (passo a passo)
+==========================================================
+
+PRIMEIRA VEZ (só uma vez)
+-------------------------
+1. Instale o XAMPP (gratuito), versão com PHP 8:
+   https://www.apachefriends.org/pt_br/download.html
+   - Pode clicar em "Next" em tudo e manter a pasta padrão C:\xampp.
+   - Se o Windows perguntar sobre o Firewall, clique em "Permitir".
+
+2. Extraia o arquivo sentrix.zip
+   (botão direito no .zip > "Extrair tudo...").
+   A pasta pode ficar em qualquer lugar: Área de Trabalho, Documentos...
+
+PARA USAR (sempre)
+------------------
+3. Abra a pasta "sentrix" e dê dois cliques em  INICIAR.bat
+   - O MySQL liga sozinho, o banco de dados é criado sozinho na
+     primeira vez, e o site abre no navegador.
+   - Deixe a janela preta aberta enquanto usa o sistema.
+     Para desligar, é só fechar essa janela.
+
+4. Entre com:
+     admin@sentrixguard.com     senha: admin123      (administrador)
+     operador@sentrixguard.com  senha: operador123   (operador)
+     visitante@sentrixguard.com senha: visitante123  (só visualiza)
+
+5. Depois da senha, o sistema pede a CONFIRMAÇÃO POR E-MAIL.
+   Enquanto o Gmail não estiver configurado (modo demonstração), clique em
+   "Abrir a caixa de saída" e depois no botão "Entrar no Sentrix" do e-mail.
+
+ENVIAR E-MAILS DE VERDADE (opcional, precisa de internet)
+---------------------------------------------------------
+1. Crie (ou use) um Gmail só do projeto, ex.: sentrix.tcc@gmail.com
+2. Nessa conta, ative a "Verificação em duas etapas".
+3. Abra https://myaccount.google.com/apppasswords , digite "Sentrix"
+   e clique em Criar. Copie a senha de 16 letras que aparece.
+4. No Sentrix, entre como admin > Admin > E-mail. Cole o Gmail e a
+   senha de app, clique em Salvar e depois em "Enviar e-mail de teste".
+5. Pronto: no próximo login, o link chega na caixa de entrada
+   (se não aparecer, olhe Spam/Promoções).
+   Para usar contas de teste com e-mail real, mude o e-mail do usuário
+   ou crie uma conta nova em "Cadastre-se" com um e-mail de vocês.
+
+INSTALAR COMO APLICATIVO
+------------------------
+- No computador: com o sistema aberto no Chrome ou Edge, clique no
+  ícone "Instalar" na barra de endereço (ou no botão "Instalar" do Painel).
+- No celular: só funciona com o site publicado na internet com https://
+  (o navegador do celular exige isso). Veja a página "Aplicativo" do site.
+
+OUTROS ATALHOS
+--------------
+  SIMULAR-EVENTOS.bat  -> deixa o sistema "vivo" na apresentação:
+                          gera GPS e alertas a cada 5 segundos.
+                          (Use com o INICIAR.bat já aberto e a página
+                          GPS ou o Painel abertos no navegador.)
+
+  RESTAURAR-DADOS.bat  -> apaga o que foi cadastrado nos testes e volta
+                          aos dados iniciais. Faça isso antes da banca!
+                          (Também dá pelo site: Admin > Dados de demonstração.)
+
+SE ALGO DER ERRADO
+------------------
+- "PHP não encontrado": o XAMPP não está instalado em C:\xampp.
+  Instale (passo 1) e tente de novo.
+
+- Abriu a página "Instalação" com erro de usuário/senha:
+  o seu MySQL não é o padrão do XAMPP. Abra "Configurações do MySQL"
+  nessa página, digite o usuário e a senha do seu MySQL e clique em Instalar.
+
+- "MySQL não está respondendo": abra o XAMPP Control Panel
+  (C:\xampp\xampp-control.exe) e clique em "Start" ao lado de MySQL.
+  Se ele não ligar, outro programa está usando a porta 3306
+  (ex.: um MySQL instalado separadamente) — feche-o ou use esse MySQL
+  informando usuário e senha na página de Instalação.
+
+- O mapa aparece cinza: o computador precisa de internet
+  (o mapa vem do OpenStreetMap).
+
+- "O Gmail recusou o login": use a SENHA DE APP de 16 letras, não a senha
+  normal do Gmail. Se cair a internet na apresentação, a caixa de saída
+  continua funcionando no computador que roda o sistema.
+
+ALTERNATIVA (jeito tradicional do XAMPP)
+----------------------------------------
+Copie a pasta "sentrix" para C:\xampp\htdocs, ligue Apache e MySQL
+no XAMPP Control Panel e acesse http://localhost/sentrix/
+— o instalador abre sozinho na primeira vez.
